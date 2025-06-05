@@ -1,0 +1,46 @@
+odometry:
+  preprocessing:
+    deskew: false
+    max_range: 100.0
+    min_range: 0.5
+  registration:
+    max_num_iterations: 100
+    convergence_criterion: 0.0001
+    max_num_keypoints: 1000
+    min_motion_th: 0.1
+    initial_threshold: 2.0
+    estimate_normal: false
+  mapping:
+    voxel_size: 1.0
+    max_distance: 100.0
+    max_points_per_voxel: 20
+  adaptive_threshold:
+    initial_threshold: 2.0
+    min_motion_th: 0.1
+
+local_mapper:
+  voxel_size: 1.0
+  splitting_distance: 50.0
+
+loop_closer:
+  detector:
+    overlap_threshold: 0.5
+    distance_threshold: 5.0
+    yaw_threshold: 0.5
+    global_min_match: 15
+    local_min_match: 8
+    max_submaps_between_loop_closures: 3
+    max_icp_distance: 200.0
+    submaps_overlap: 0.5
+    voxel_size: 1.0
+  overlap_threshold: 0.4
+
+pose_graph_optimizer:
+  max_iterations: 5
+
+occupancy_mapper:
+  free_threshold: 0.2
+  occupied_threshold: 0.65
+  resolution: 0.5
+  z_min: 0.1
+  z_max: 3.0 

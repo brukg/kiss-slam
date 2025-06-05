@@ -8,6 +8,8 @@
     <br />
     <a href="https://github.com/PRBonn/kiss-slam/blob/main/README.md#Install">Install</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+    <a href="https://github.com/brukg/kiss-slam/blob/main/README_ROS2.md">ROS2</a>
+    <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     <a href="https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/kiss2025iros.pdf">Paper</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     <a href=https://github.com/PRBonn/kiss-slam/issues>Contact Us</a>
@@ -29,6 +31,30 @@
 ```
 pip install kiss-slam
 ```
+
+## ROS2 Integration
+
+KISS-SLAM is also available as a ROS2 package for real-time SLAM with live sensor data. The ROS2 node subscribes to PointCloud2 topics and publishes SLAM results including odometry, trajectory, and loop closures.
+
+### Quick Start (ROS2)
+```bash
+# Clone into your ROS2 workspace
+cd ~/ros2_ws/src
+git clone <repository_url> kiss_slam
+
+# Install dependencies
+cd kiss_slam
+rosdep install --from-paths . --ignore-src -r -y
+pip3 install "kiss-icp>=1.2.3" "map_closures>=2.0.2" "open3d>=0.19.0" "pydantic>=2" "pydantic-settings"
+
+# Build and run
+cd ~/ros2_ws
+colcon build --packages-select kiss_slam
+source install/setup.bash
+ros2 launch kiss_slam kiss_slam.launch.py input_topic:=/your_lidar_topic
+```
+
+For detailed ROS2 installation and usage instructions, see [README_ROS2.md](README_ROS2.md).
 
 ## Running the system
 Next, follow the instructions on how to run the system by typing:

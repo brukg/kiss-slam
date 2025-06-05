@@ -19,4 +19,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/occupancy_mapper)
 pybind11_add_module(kiss_slam_pybind MODULE kiss_slam_pybind.cpp)
 target_link_libraries(kiss_slam_pybind PRIVATE pgo voxel_map Eigen3::Eigen occupancy_mapper)
 target_compile_features(kiss_slam_pybind PUBLIC cxx_std_20)
-install(TARGETS kiss_slam_pybind DESTINATION .)
+
+# Install the pybind11 module to the ROS2 package directory (not system-wide)
+install(TARGETS kiss_slam_pybind 
+        DESTINATION lib/python3.12/site-packages/kiss_slam/kiss_slam_pybind)
